@@ -75,6 +75,7 @@ class BaseTestClass():
 
 		# We have a parameterized test class, which passes parameters to each test case.
 		for test_class_name in list_test_cases:
+
 			BaseTestClass.skip_run_once(suite, run_once)
 			suite.addTest(ParameterizedTest.parametrize(test_class_name, param=param, upload_num=iteration_num))
 
@@ -124,8 +125,11 @@ class BaseTestClass():
 		# r=root, d=directories, f = files
 		for r, d, f in os.walk(path):
 			for file in f:
-				if file.startswith("test_") and file.endswith('.py'):
-					path = os.path.join("test", file).replace('/', '.').replace('.py', '')
+				if file.startswith("test_") and (file.endswith('.py') or file.endswith('.py.inst')):
+					if file.endswith('.py.inst'):
+						path = os.path.join("test", file).replace('/', '.').replace('.py.inst', '')
+					elif file.endswith('.py'):
+						path = os.path.join("test", file).replace('/', '.').replace('.py', '')
 					files.append(path)
 
 		BaseTestClass.test_file_path = files
