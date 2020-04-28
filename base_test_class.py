@@ -84,14 +84,13 @@ class BaseTestClass():
 		# Fail-early. This is important for external tool like CI to detect failures early and report it to developer
 
 		if not result.wasSuccessful():
-			exit(1)
+			raise Exception('Functional test failure!')
 
 		# Fail fast for Performance analysis
 
 		if fail_fast:
 			if fail_fast_check():
-				exit(1)
-
+				raise Exception('Performance issue identified!')
 
 	@staticmethod
 	def skip_run_once(suite, run_once):
