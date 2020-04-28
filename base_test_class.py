@@ -40,7 +40,7 @@ class BaseTestClass():
 			if iteration_num < int(os.environ['RESUME']):
 				return
 
-		if "END" in os.environ:
+		if "STOP" in os.environ:
 			# In case of end, we can successfully terminate the test runner
 			if iteration_num > int(os.environ['STOP']):
 				exit(0)
