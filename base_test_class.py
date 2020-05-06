@@ -126,9 +126,12 @@ class BaseTestClass():
 			for file in f:
 				if file.startswith("test_") and (file.endswith('.py') or file.endswith('.py.inst')):
 					if file.endswith('.py.inst'):
-						path = os.path.join("test", file).replace('/', '.').replace('.py.inst', '')
+						path = os.path.join(r, file).replace('/', '.').replace('.py.inst', '')
 					elif file.endswith('.py'):
-						path = os.path.join("test", file).replace('/', '.').replace('.py', '')
+						path = os.path.join(r, file).replace('/', '.').replace('.py', '')
+					path_index = path.index('test')
+					path = path[path_index:]
+
 					files.append(path)
 
 		BaseTestClass.test_file_path = files
