@@ -77,7 +77,7 @@ class BaseTestClass():
 		for test_class_name in list_test_cases:
 
 			BaseTestClass.skip_run_once(suite, run_once)
-			suite.addTest(ParameterizedTest.parametrize(test_class_name, param=param, upload_num=iteration_num))
+			suite.addTest(ParameterizedTest.parametrize(test_class_name, param=param))
 
 		result = unittest.TextTestRunner(verbosity=2).run(suite)
 
