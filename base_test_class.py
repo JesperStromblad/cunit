@@ -129,7 +129,7 @@ class BaseTestClass():
 						path = os.path.join(r, file).replace('/', '.').replace('.py.inst', '')
 					elif file.endswith('.py'):
 						path = os.path.join(r, file).replace('/', '.').replace('.py', '')
-					path_index = path.rindex('test')
+					path_index = path.index('test.')
 					path = path[path_index:]
 
 					files.append(path)
