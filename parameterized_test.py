@@ -13,14 +13,13 @@ class ParameterizedTest(unittest.TestCase):
 		inherit from this class.
 	"""
 
-	def __init__(self, methodName='runTest', param=None, upload_num=None):
+	def __init__(self, methodName='runTest', param=None):
 
 		super(ParameterizedTest, self).__init__(methodName)
 		self.param = param
-		self.upload_num = upload_num
 
 	@staticmethod
-	def parametrize(testcase_klass, param=None, upload_num=None):
+	def parametrize(testcase_klass, param=None):
 
 		""" Create a suite containing all tests taken from the given
 			subclass, passing them the parameter 'param'.
@@ -34,7 +33,7 @@ class ParameterizedTest(unittest.TestCase):
 
 		for name in testnames:
 
-			suite.addTest(testcase_klass(name, param=param, upload_num=upload_num))
+			suite.addTest(testcase_klass(name, param=param))
 
 		return suite
 
