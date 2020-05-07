@@ -83,8 +83,9 @@ class BaseTestClass():
 
 		# Fail-early. This is important for external tool like CI to detect failures early and report it to developer
 
-		if not result.wasSuccessful():
-			raise Exception('Functional test failure!')
+		if fail_fast:
+			if not result.wasSuccessful():
+				raise Exception('Functional test failure!')
 
 		# Fail fast for Performance analysis
 
